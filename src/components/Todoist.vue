@@ -9,13 +9,15 @@
     </div>
 
     <div class="list-wrapper">
-      <ListItem
-        v-for="item in displayList"
-        v-bind:key="item.id"
-        v-bind:data="item"
-        v-on:remove="remove"
-        v-on:check="check"
-      />
+      <transition-group name="list" tag="p">
+        <ListItem
+          v-for="item in displayList"
+          v-bind:key="item.id"
+          v-bind:data="item"
+          v-on:remove="remove"
+          v-on:check="check"
+        />
+      </transition-group>
     </div>
   </div>
 </template>
@@ -100,5 +102,12 @@ export default {
 }
 .list-counter {
   margin-top: 10px;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 0.25s;
+}
+.list-enter, .list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

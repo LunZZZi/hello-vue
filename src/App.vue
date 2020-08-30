@@ -1,21 +1,27 @@
 <template>
   <div id="app">
-    <NavBar />
-    <Todoist />
+    <div id="nav">
+      <!-- use router-link component for navigation -->
+      <router-link to="/">Home</router-link>
+      <router-link :to="username">Dashboard</router-link>
+      <router-link to="/about">About</router-link>
+    </div>
+    <!-- route outlet-->
+    <router-view />
   </div>
 </template>
 
 <script>
-import Todoist from './components/Todoist.vue'
-import NavBar from './components/NavBar.vue'
 
 export default {
   name: 'App',
-  components: {
-    Todoist,
-    NavBar
+  data() {
+    return {
+      username: '/user/wang'
+    }
   }
 }
+
 </script>
 
 <style>
@@ -25,5 +31,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-right: 5px;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

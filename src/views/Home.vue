@@ -1,9 +1,6 @@
 <template>
   <div class="home">
-    <ElButton @click="visible = true">Button</ElButton>
-    <ElDialog :visible.sync="visible" title="Hello World">
-      <p>Try Element</p>
-    </ElDialog>
+
   </div>
 </template>
 
@@ -12,6 +9,7 @@
 
 export default {
   name: 'Home',
+  components: {},
   data() {
     return {
       visible: false
